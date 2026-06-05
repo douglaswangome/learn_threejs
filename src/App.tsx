@@ -123,9 +123,12 @@ export function App() {
 
 			const material = new MeshPhongMaterial({ map: texture })
 			const mesh = new Mesh(geometry, material)
-			mesh.rotation.z = tilt * (Math.PI / 180)
 
-			systemGroup.add(mesh)
+			const tiltGroup = new Group()
+			tiltGroup.rotation.z = tilt * (Math.PI / 180)
+
+			tiltGroup.add(mesh)
+			systemGroup.add(tiltGroup)
 			planetSystems.push({ group: systemGroup, mesh, data: planet })
 
 			if (name === 'Saturn') {
